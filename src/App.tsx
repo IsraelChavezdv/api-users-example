@@ -14,6 +14,6 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-  return <>{data && <Table data={data} />}</>;
+  return <div className="container">{data && <Table data={data} />}</div>;
 }
 export default App;
