@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Users } from "../../types/types";
+import { Users } from "../../interface/Users";
 
 interface ModalProps {
   user: Users;
@@ -8,13 +8,12 @@ interface ModalProps {
 }
 
 export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
-  const modalRef = useRef<HTMLInputElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen && modalRef.current) {
       modalRef.current.classList.add("show");
       modalRef.current.style.display = "block";
-      modalRef.current.focus();
     } else if (modalRef.current) {
       modalRef.current.classList.remove("show");
       modalRef.current.style.display = "none";
@@ -29,9 +28,6 @@ export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
     <div
       ref={modalRef}
       className="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
       tabIndex={-1}
       aria-labelledby="staticBackdropLabel"
       aria-hidden={!isOpen}
@@ -39,14 +35,14 @@ export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h1 className="modal-title fs-5" id="staticBackdropLabel">
+            <h5 className="modal-title" id="staticBackdropLabel">
               Detalles del Usuario
-            </h1>
+            </h5>
             <button
               type="button"
               className="btn-close"
+              data-bs-dismiss="modal"
               onClick={closeModal}
-              aria-label="Close"
             ></button>
           </div>
           <div className="modal-body">
@@ -63,6 +59,9 @@ export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
               <strong>Dirección:</strong> {user.address.street},{" "}
               {user.address.city}
             </p>
+            <p>
+              <strong>Sitio Web:</strong> {user.website}
+            </p>
           </div>
           <div className="modal-footer">
             <button
@@ -72,6 +71,7 @@ export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
             >
               Cerrar
             </button>
+            {/* Aquí puedes agregar más botones si es necesario */}
           </div>
         </div>
       </div>
