@@ -1,0 +1,54 @@
+/* Tabla estilizada */
+.table {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  min-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background: #2575fc;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.clickable-row:hover {
+  background-color: #a7b1b1;
+  cursor: pointer;
+}
+
+/* Contenedor de la tabla */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  overflow-y: scroll; /* Permite el desplazamiento vertical si la tabla excede el contenedor*/
+  flex-grow: 1; /* Asegura que la tabla ocupe todo el espacio disponible */
+  max-height: calc(
+    80vh - 120px
+  ); /* Ajuste de altura para que la tabla ocupe el espacio restante dentro del contenedor*/
+  margin-top: 10px; /* Deja espacio entre el input de búsqueda y la tabla */
+}
+
+/* Ocultar las barras de desplazamiento visualmente, pero mantener el desplazamiento */
+.table-responsive::-webkit-scrollbar {
+  width: 0px; /* Ocultar la barra de desplazamiento en navegadores Webkit (Chrome, Safari) */
+  height: 0px; /* Ocultar la barra de desplazamiento horizontal */
+}
+
+.table-responsive {
+  scrollbar-width: none; /* Para Firefox, oculta la barra de desplazamiento */
+  -ms-overflow-style: none; /* Para IE/Edge, oculta la barra de desplazamiento */
+}
