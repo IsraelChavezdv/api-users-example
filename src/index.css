@@ -1,0 +1,165 @@
+/* Fondo con degradado*/
+body {
+  background: linear-gradient(to top, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  color: #0b0a0a;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* Contenedor principal */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  /*text-align: center;*/
+  max-width: 1000px; /* Limita el ancho máximo del contenedor */
+  max-height: 80vh; /* Limita la altura del contenedor */
+  /*overflow: hidden;  Evita el desbordamiento */
+  display: flex;
+  flex-direction: column; /* Permite que los elementos se alineen verticalmente */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+/* Input de búsqueda con bordes redondeados */
+.search-input {
+  border-radius: 20px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  max-width: 250px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+}
+
+.search-container label {
+  font-size: 1em;
+  color: #0b0a0a;
+}
+
+/* Animación para el título */
+.animated-title {
+  animation: bounce 1s infinite alternate;
+}
+
+/* Keyframes para animación */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Media Queries */
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+    height: 85vh; /* Ajustar la altura del contenedor en pantallas pequeñas */
+  }
+
+  .table th,
+  .table td {
+    font-size: 10px; /* Ajuste de tamaño de fuente */
+    padding: 8px; /* Ajuste de padding */
+  }
+
+  .search-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .table-responsive {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    max-height: calc(
+      85vh - 120px
+    ); /* Ajuste de altura para la tabla en pantallas pequeñas */
+  }
+
+  .table {
+    min-width: 300px; /* Asegura que la tabla tenga un ancho mínimo en pantallas pequeñas */
+  }
+}
+
+/* Dispositivos medianos (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+    height: 80vh; /* Ajuste de altura del contenedor en tablets */
+  }
+
+  .table th,
+  .table td {
+    font-size: 12px; /* Ajuste de tamaño de fuente */
+    padding: 10px; /* Ajuste de padding */
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+
+  .table-responsive {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    max-height: calc(80vh - 120px); /* Ajuste de altura para la tabla */
+  }
+
+  .table {
+    min-width: 350px; /* Ajuste del ancho mínimo para tablets */
+  }
+}
+
+/* Dispositivos grandes (escritorios y pantallas grandes) */
+@media (min-width: 769px) {
+  .container {
+    width: 80%;
+    padding: 20px;
+    height: 80vh; /* Ajuste de altura del contenedor en pantallas grandes */
+  }
+
+  .table th,
+  .table td {
+    font-size: 16px; /* Tamaño de fuente más grande */
+    padding: 15px; /* Ajuste de padding */
+  }
+
+  .search-input {
+    font-size: 16px;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    max-height: calc(80vh - 120px); /* Ajuste de altura para la tabla */
+  }
+
+  .table {
+    min-width: 600px; /* Ajuste del ancho mínimo para pantallas grandes */
+  }
+}

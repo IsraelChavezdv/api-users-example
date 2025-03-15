@@ -1,0 +1,10 @@
+/* Modal CSS */
+.modal {
+  display: none; /* Oculto por defecto */
+  transition: opacity 0.3s ease; /* Animación suave */
+}
+
+.modal.show {
+  display: block; /* Mostrar el modal cuando tenga la clase 'show' */
+  opacity: 1; /* Hacer visible el modal */
+}
