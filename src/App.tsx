@@ -1,8 +1,9 @@
-import Swal from "sweetalert2";
 import { Table } from "./components";
 import { Users } from "./interface/Users";
 import { useFetch } from "./hooks/useFetch";
 import { useState } from "react";
+
+import Swal from "sweetalert2";
 
 const url = "https://jsonplaceholder.typicode.com/users";
 
