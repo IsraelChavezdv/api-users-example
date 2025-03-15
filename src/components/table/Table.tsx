@@ -3,25 +3,30 @@ import { Users } from "../../interface/Users";
 import "./Table.css";
 import { Modal } from "../modal/Modal";
 
-type selectedUser = Users | null;
+type SelectedUser = Users | null;
 
 interface TableProps {
   data: Users[];
 }
 
 export const Table = ({ data }: TableProps) => {
-  const [userSelected, setUserSelected] = useState<selectedUser>(null);
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<SelectedUser>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchUser, setSearchUser] = useState<string>("");
 
+  // Función optimizada fuera del JSX
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchUser(e.target.value);
+  };
+
   const openModal = (user: Users) => {
-    setUserSelected(user);
-    setIsOpenModal(true);
+    setSelectedUser(user);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setUserSelected(null);
-    setIsOpenModal(false);
+    setSelectedUser(null);
+    setIsModalOpen(false);
   };
 
   const filteredUsers = searchUser
@@ -41,7 +46,7 @@ export const Table = ({ data }: TableProps) => {
           placeholder=""
           className="search-input p-2 border rounded"
           value={searchUser}
-          onChange={(e) => setSearchUser(e.target.value)}
+          onChange={handleSearchChange}
         />
       </div>
 
@@ -70,10 +75,10 @@ export const Table = ({ data }: TableProps) => {
         </table>
       </div>
 
-      {userSelected && (
+      {selectedUser && (
         <Modal
-          user={userSelected}
-          isOpen={isOpenModal}
+          user={selectedUser}
+          isOpen={isModalOpen}
           closeModal={closeModal}
         />
       )}

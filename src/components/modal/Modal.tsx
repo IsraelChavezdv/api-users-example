@@ -1,25 +1,26 @@
 import { useEffect, useRef } from "react";
 import { Users } from "../../interface/Users";
+import "./Modal.css";
 
-interface ModalProps {
+interface UserModalProps {
   user: Users;
   isOpen: boolean;
   closeModal: () => void;
 }
 
-export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
+export const Modal = ({ user, isOpen, closeModal }: UserModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    //Añadir o eliminar la clase 'show' para manejar la visibilidad del modal
     if (isOpen && modalRef.current) {
       modalRef.current.classList.add("show");
-      modalRef.current.style.display = "block";
     } else if (modalRef.current) {
       modalRef.current.classList.remove("show");
-      modalRef.current.style.display = "none";
     }
   }, [isOpen]);
 
+  // Si el modal no está abierto, no se renderiza nada
   if (!isOpen) {
     return null;
   }
