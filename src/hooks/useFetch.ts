@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-type Data<T> = T | null;
+type ResponseData<T> = T | null;
 type ErrorType = Error | null;
 
-interface Params<T> {
-  data: Data<T>;
+interface FetchResponse<T> {
+  data: ResponseData<T>;
   loading: boolean;
   error: ErrorType;
 }
-export const useFetch = <T>(url: string): Params<T> => {
-  const [data, setData] = useState<Data<T>>(null);
+export const useFetch = <T>(url: string): FetchResponse<T> => {
+  const [data, setData] = useState<ResponseData<T>>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<ErrorType>(null);
 
@@ -20,7 +20,11 @@ export const useFetch = <T>(url: string): Params<T> => {
         const response = await axios.get(url);
         setData(response.data);
       } catch (err) {
-        setError(err as Error);
+        if (err instanceof Error) {
+          setError(err); // Asegurarse de que err es una instancia de Error
+        } else {
+          setError(new Error("An unknown error occurred"));
+        }
       } finally {
         setLoading(false);
       }
