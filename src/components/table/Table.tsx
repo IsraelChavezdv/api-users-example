@@ -69,6 +69,7 @@ export const Table = ({ data }: TableProps) => {
           </tbody>
         </table>
       </div>
+
       {userSelected && (
         <Modal
           user={userSelected}

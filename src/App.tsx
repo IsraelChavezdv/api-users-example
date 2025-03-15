@@ -8,25 +8,25 @@ const url = "https://jsonplaceholder.typicode.com/users";
 
 function App() {
   const { data, error, loading } = useFetch<Users[]>(url);
-  const [controller, setController] = useState(false);
+  const [controllerLoading, setControllerLoading] = useState(false);
 
   if (loading) {
     Swal.fire({
       title: "Cargando...",
-      text: "Obteniendo los datos.",
+      text: "Obteniendo los datos",
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
       },
       willClose: () => {
-        setController(true);
+        setControllerLoading(true);
       },
     });
   }
 
   if (error) {
-    setController(false);
+    setControllerLoading(false);
     return Swal.fire({
       icon: "error",
       title: "Oops...",
@@ -35,7 +35,7 @@ function App() {
     });
   }
 
-  if (controller) {
+  if (controllerLoading) {
     return <div className="container">{data && <Table data={data} />}</div>;
   }
 }

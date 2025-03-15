@@ -45,7 +45,7 @@ export const Modal = ({ user, isOpen, closeModal }: ModalProps) => {
               onClick={closeModal}
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body text-center">
             <p>
               <strong>Nombre:</strong> {user.name}
             </p>
